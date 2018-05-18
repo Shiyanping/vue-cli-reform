@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>vue-cli</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <script>
+      function Rem() {
+          var docEl = document.documentElement,
+              oSize = docEl.clientWidth / 7.5;
+          docEl.style.fontSize = oSize + "px";
+      }
+
+      window.addEventListener("resize", Rem, false);
+      Rem();
+    </script>
+  </body>
+</html>
