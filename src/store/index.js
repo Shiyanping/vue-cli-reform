@@ -1,18 +1,17 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import state from './state';
-import actions from './actions';
-import mutations from './mutations';
+import Vue from 'vue'
+import Vuex from 'vuex'
+import app from './modules/app'
+import user from './modules/user'
+import getters from './getters'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state,
-  actions,
-  mutations,
-  getters: {
-    doubleCity(state) {
-      return state.city + ',' + state.city;
-    }
-  }
-});
+const store = new Vuex.Store({
+  modules: {
+    app,
+    user
+  },
+  getters
+})
+
+export default store

@@ -34,11 +34,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
-      '@css': resolve('src/assets/css'),
-      '@js': resolve('src/assets/js'),
-      '@pages': resolve('src/components/pages'),
+      '@': resolve('src')
     }
   },
   module: {
@@ -52,11 +48,20 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        include: [resolve('src'), resolve('test') ,resolve('node_modules/webpack-dev-server/client')]
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        include: [resolve('src/icons')],
+        options: {
+          symbolId: 'icon-[name]'
+        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
+        exclude: [resolve('src/icons')],
         options: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
