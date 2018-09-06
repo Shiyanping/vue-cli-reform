@@ -1,14 +1,12 @@
-import request from '@/utils/request'
+import request from '@/utils/request';
 
 export function login(username, password) {
-  return request({
-    url: '/user/login',
-    method: 'post',
-    data: {
+  return request.post(process.env.PUSH_API + '/push/message/login', {}, {
+    params: {
       username,
       password
     }
-  })
+  });
 }
 
 export function getInfo(token) {
@@ -16,12 +14,13 @@ export function getInfo(token) {
     url: '/user/info',
     method: 'get',
     params: { token }
-  })
+  });
 }
 
-export function logout() {
+export function logout(params) {
   return request({
-    url: '/user/logout',
-    method: 'post'
-  })
+    url: '/push/message/logout',
+    method: 'get',
+    params
+  });
 }

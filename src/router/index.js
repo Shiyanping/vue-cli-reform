@@ -1,13 +1,13 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
 
 // in development-env not use lazy-loading, because lazy-loading too many pages will cause webpack hot update too slow. so only in production use lazy-loading;
 // detail: https://panjiachen.github.io/vue-element-admin-site/#/lazy-loading
 
-Vue.use(Router)
+Vue.use(Router);
 
 /* Layout */
-import Layout from '../views/layout/Layout'
+import Layout from '../views/layout/Layout';
 
 /**
 * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
@@ -29,7 +29,7 @@ export const constantRouterMap = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    name: 'Dashboard',
+    name: 'dashboard',
     hidden: true,
     children: [{
       path: 'dashboard',
@@ -38,104 +38,88 @@ export const constantRouterMap = [
   },
 
   {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
-  },
-
-  {
-    path: '/form',
+    path: '/pushForm',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        name: 'pushForm',
+        component: () => import('@/views/pushForm/index'),
+        meta: { title: '推送配置', icon: 'form' }
       }
     ]
   },
 
+  // {
+  //   path: '/newsearn',
+  //   component: Layout,
+  //   redirect: '/newsearn/pushManagement',
+  //   name: 'newsearn',
+  //   meta: { title: '淘新闻文章库', icon: 'table' },
+  //   children: [
+  //     {
+  //       path: 'pushManagement',
+  //       name: 'pushManagement',
+  //       component: () => import('@/views/pushManage/index'),
+  //       meta: { title: '稿件管理', icon: 'example' }
+  //     },
+  //     {
+  //       path: 'pushHistory',
+  //       name: 'pushHistory',
+  //       component: () => import('@/views/pushHistory/index'),
+  //       meta: { title: '推送历史', icon: 'example' }
+  //     },
+  //     {
+  //       path: 'handArticle',
+  //       name: 'handArticle',
+  //       component: () => import('@/views/handArticle/index'),
+  //       meta: { title: '手选文章', icon: 'example' }
+  //     }
+  //   ]
+  // },
+
   {
-    path: '/nested',
+    path: '/pushManagement',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'nested',
-    meta: {
-      title: 'nested',
-      icon: 'nested'
-    },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'menu1',
-        meta: { title: 'menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'menu1-1',
-            meta: { title: 'menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'menu1-2',
-            meta: { title: 'menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'menu1-2-1',
-                meta: { title: 'menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'menu1-2-2',
-                meta: { title: 'menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'menu1-3',
-            meta: { title: 'menu1-3' }
-          }
-        ]
-      },
+        path: 'index',
+        name: 'pushManagement',
+        component: () => import('@/views/pushManage/index'),
+        meta: { title: '稿件管理', icon: 'table' }
+      }
+    ]
+  },
+  {
+    path: '/pushHistory',
+    component: Layout,
+    children: [
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: 'menu2' }
+        path: 'index',
+        name: 'pushHistory',
+        component: () => import('@/views/pushHistory/index'),
+        meta: { title: '推送历史', icon: 'table' }
+      }
+    ]
+  },
+  {
+    path: '/handArticle',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'handArticle',
+        component: () => import('@/views/handArticle/index'),
+        meta: { title: '淘新闻手选文章库', icon: 'table' }
       }
     ]
   },
 
   { path: '*', redirect: '/404', hidden: true }
-]
+];
 
 export default new Router({
   // mode: 'history', //后端支持可开
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
-})
-
+});

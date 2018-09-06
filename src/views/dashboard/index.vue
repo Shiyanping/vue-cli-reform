@@ -1,22 +1,23 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name:{{name}}</div>
-    <div class="dashboard-text">roles:<span v-for='role in roles' :key='role'>{{role}}</span></div>
+    <h1>Web推送后台操作介绍</h1>
+    <h2>欢迎使用Web推送后台，操作需谨慎，在不确定前，一定要给自己先推一条看看情况。</h2>
+    <h2>请看左侧菜单栏找到自己需要操作的项目。</h2>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex';
 
 export default {
-  name: 'dashboard',
+  name: 'Dashboard',
   computed: {
     ...mapGetters([
       'name',
       'roles'
     ])
   }
-}
+};
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>

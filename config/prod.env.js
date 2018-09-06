@@ -1,5 +1,6 @@
 'use strict'
 module.exports = {
   NODE_ENV: '"production"',
-  BASE_API: '"https://easy-mock.com/mock/5950a2419adc231f356a6636/vue-admin"',
+  NE_API: '"http://ne-admin.coohua-inc.com"',
+  PUSH_API: '"http://push-web.coohua-inc.com"',
 }
