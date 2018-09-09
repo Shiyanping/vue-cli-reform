@@ -1,8 +1,10 @@
 import request from '@/utils/request';
 
 export function login(username, password) {
-  return request.post(process.env.PUSH_API + '/push/message/login', {}, {
-    params: {
+  return request({
+    url: '/user/login',
+    method: 'post',
+    data: {
       username,
       password
     }
@@ -17,10 +19,9 @@ export function getInfo(token) {
   });
 }
 
-export function logout(params) {
+export function logout() {
   return request({
-    url: '/push/message/logout',
-    method: 'get',
-    params
+    url: '/user/logout',
+    method: 'post'
   });
 }

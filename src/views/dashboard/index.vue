@@ -1,21 +1,23 @@
 <template>
   <div class="dashboard-container">
-    <h1>Web推送后台操作介绍</h1>
-    <h2>欢迎使用Web推送后台，操作需谨慎，在不确定前，一定要给自己先推一条看看情况。</h2>
-    <h2>请看左侧菜单栏找到自己需要操作的项目。</h2>
+    欢迎使用该系统，系统主要 fork 于
+    <a href="https://panjiachen.github.io/vue-element-admin-site/zh/">vue-element-admin</a>
+    其中有更加详细的文档，复杂的功能可以进入该文档查看
+    <p>当前时间：{{ date }}</p>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
+import { formatTime } from '@/utils';
 export default {
   name: 'Dashboard',
-  computed: {
-    ...mapGetters([
-      'name',
-      'roles'
-    ])
+  data() {
+    return {
+      date: ''
+    };
+  },
+  created() {
+    this.date = formatTime(new Date().getTime(), 'yyyy-MM-dd hh:mm:ss');
   }
 };
 </script>
